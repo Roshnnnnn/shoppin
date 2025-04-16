@@ -1,0 +1,23 @@
+.active-tab {
+  background: linear-gradient(to right, #818cf8, #a855f7);
+  color: #111827 !important;
+  font-weight: 600;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.nav-button {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #111827;
+}
+
+/* Make all text black */
+button, h1, h2, h3, h4, h5, h6, p, span {
+  color: #111827 !important;
+}
+
+/* Override white text for specific buttons */
+button.bg-gradient-to-r {
+  color: #111827 !important;
+}
