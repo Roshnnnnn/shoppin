@@ -13,6 +13,7 @@ export const productSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
+    resetState: () => initialState,
     likeProduct: (state) => {
       const currentProduct = state.products[state.currentIndex];
       if (currentProduct && !state.likedProducts.find(p => p.id === currentProduct.id)) {
@@ -36,7 +37,6 @@ export const productSlice = createSlice({
     },
     moveToLiked: (state, action) => {
       const { productId, fromList } = action.payload;
-      let sourceList = null;
       let product = null;
 
       // Find the source list and product
@@ -136,6 +136,7 @@ export const productSlice = createSlice({
 });
 
 export const { 
+  resetState,
   likeProduct, 
   passProduct, 
   addToCart,

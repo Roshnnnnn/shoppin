@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { resetState } from './store/productSlice';
 import Discover from './components/Discover';
 import ProductList from './components/ProductList';
 import { HiOutlineHeart, HiOutlineShoppingCart, HiOutlineX, HiOutlineHome } from 'react-icons/hi';
@@ -73,7 +74,18 @@ const Navigation = () => {
 const MainContent = () => {
   const location = useLocation();
   const [pageKey, setPageKey] = useState(0);
+  const dispatch = useDispatch();
   
+  useEffect(() => {
+    // Reset state on page load/refresh
+    const handleReset = () => {
+      dispatch(resetState());
+    };
+
+    window.addEventListener('load', handleReset);
+    return () => window.removeEventListener('load', handleReset);
+  }, [dispatch]);
+
   useEffect(() => {
     // Force re-render when location changes
     setPageKey(prev => prev + 1);
